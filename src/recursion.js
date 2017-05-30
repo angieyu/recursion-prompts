@@ -27,7 +27,24 @@ var sum = function(array, counter) {
 
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
-var arraySum = function(array) {};
+var arraySum = function(array) {
+  // edge case, if array is empty, return null
+  if (array.length === 0) return 0;
+  // initialize
+  if (!sumArr) var sumArr = 0;
+  // loop through the array, if the element at index i of the array is an array, recursive call
+  // if the element is not an array, add it to the sum
+  for (let i = 0; i < array.length; i += 1) {
+    if (Array.isArray(array[i]) === true) {
+      sumArr += arraySum(array[i]);
+    } else {
+      sumArr += array[i];
+    }
+  }
+  return sumArr;
+};
+
+// console.log(arraySum([1, [2, 3], [[4]], 5]));
 
 // 4. Check if a number is even.
 var isEven = function(n) {};
@@ -57,7 +74,7 @@ var powerOfTwo = function(n) {};
 // 9. Write a function that reverses a string.
 var reverse = function(string, counter = 0) {
   // base case
-  if (counter === string.length) return '';
+  if (counter === string.length) return "";
   return reverse(string, counter + 1) + string[counter];
 };
 
