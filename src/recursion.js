@@ -57,24 +57,38 @@ var isEven = function (n) {
 var sumBelow = function (n) {
     console.log(n);
     // base case
-    if (n === 1) {
+    if (n === 0) {
         console.log('we hit the base case');
-        return 1;
+        return 0;
     }
-    // initialize var to hold sum
-    if (!sum_sumBelow) var sum_sumBelow = 0;
-    // add
-    n--;
-    sum_sumBelow = n + sumBelow(n - 1);
-    return sum_sumBelow;
+    // recursive call, add onto current parameter
+    return n - 1 + sumBelow(n - 1);
+    // return n + sumBelow(n - 1);
 };
+// solution 2
+function sumBelow(n) {
+    return n ? n - 1 + sumBelow(n - 1) : 0
+}
 
-console.log('answer is', sumBelow(4));
+// console.log('answer is', sumBelow(4));
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function (x, y) {
+    console.log('x is', x, 'y is ', y);
+    // base case
+    if (x + 2 === y) {
+        console.log('we hit the base case');
+        return [x + 1];
+    }
+    // initialize array
+    var arr = range(x, y - 1);
+    console.log(arr);
+    arr.push(y - 1);
+    return arr;
+    // return arr;
 };
+console.log(range(2, 9));
 
 // 7. Compute the exponent of a number.
 // The exponent of a number says how many times the base number is used as a factor.
