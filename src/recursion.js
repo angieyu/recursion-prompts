@@ -62,7 +62,7 @@ var sumBelow = function (n) {
   console.log(n);
   // base case
   if (n === 0) {
-    console.log('we hit the base case');
+    // console.log('we hit the base case');
     return 0;
   }
   // recursive call, add onto current parameter
@@ -87,7 +87,7 @@ var range = function (x, y) {
   arr.push(y - 1);
   return arr;
 };
-console.log(range(2, 9));
+// console.log(range(2, 9));
 
 // 7. Compute the exponent of a number.
 // The exponent of a number says how many times the base number is used as a factor.
@@ -117,15 +117,21 @@ var powerOfTwo = function (n) {
 // console.log(powerOfTwo(10));
 
 // 9. Write a function that reverses a string.
-// var reverse = function (string, counter = 0) {
-//   // base case
-//   if (counter === string.length) return '';
-//   return reverse(string, counter + 1) + string[counter];
-// };
+var reverse = function (string, counter = 0) {
+  // base case
+  if (counter === string.length) return '';
+  return reverse(string, counter + 1) + string[counter];
+};
 
 // 10. Write a function that determines if a string is a palindrome.
 const palindrome = function (string) {
+  console.log(string);
+  if (string.length == 1) return true;
+  if (string[0] === string[string.length - 1]) {
+    return palindrome(string.substring(1, string.length - 1));
+  } else return false;
 };
+console.log(palindrome('madm'));
 
 // 11. Write a function that returns the remainder of x divided by y without using the
 // modulo (%) operator.
