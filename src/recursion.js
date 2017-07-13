@@ -139,7 +139,11 @@ console.log(palindrome('madm'));
 // modulo(17,5) // 2
 // modulo(22,6) // 4
 const modulo = function (x, y) {
+  var quotient = x - y;
+  if(quot)
+  return modulo(quotient, y);
 };
+console.log(modulo(5,2));
 
 // 12. Write a function that multiplies two numbers without using the * operator or
 // Math methods.
@@ -327,3 +331,43 @@ const mergeSort = function (array) {
 // obj1 === obj2 // false
 const clone = function (input) {
 };
+
+//
+// 41. Find number of Islands
+var Input = [[1, 1, 0, 0, 0],
+  [0, 1, 0, 0, 1],
+  [0, 0, 0, 1, 1],
+  [0, 0, 0, 0, 0],
+  [1, 0, 1, 0, 1] ];
+// Output : 5
+// 1: land
+// 0: water
+function findIsland(x,y){
+
+  // if original coords is land
+  if(x < 0 || y < 0 || x >= Input.length || y >= Input[0].length) return 0;
+  if(Input[x][y]==1){
+    console.log("coords are " + x,y);
+    // get coords around original coord
+    // recursively call function for each option
+    Input[x][y]=0;
+    findIsland(x,y+1);
+    findIsland(x,y-1);
+    findIsland(x+1,y);
+    findIsland(x-1,y);
+    return 1;
+  } else return 0;
+}
+
+function moveThroughSquares(Input){
+  var Output = 0;
+  // console.log("what is return value " +findIsland(0,0));
+  for(var i = 0; i<Input.length; i++){
+    for(var j = 0; j<Input[i].length; j++){
+      Output += findIsland(i,j);
+    }
+  }
+  return Output;
+}
+
+// console.log(moveThroughSquares(Input));
