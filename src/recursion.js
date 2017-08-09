@@ -342,6 +342,8 @@ var Input = [[1, 1, 0, 0, 0],
 // Output : 5
 // 1: land
 // 0: water
+
+// 41. Find island
 function findIsland(x,y){
 
   // if original coords is land
